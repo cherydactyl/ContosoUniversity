@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ContosoUniversity.DAL;
 using ContosoUniversity.Models;
+using PagedList;
 
 namespace ContosoUniversity.Controllers
 {
@@ -16,34 +17,40 @@ namespace ContosoUniversity.Controllers
         private SchoolContext db = new SchoolContext();
 
         // GET: Student
-        public ActionResult Index(string sortOrder, string searchString)
-        {
+       public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+       {
+            ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-            var students = from s in db.Students
-                           select s;
-
-            if (!String.IsNullOrEmpty(searchString))
-                { students = students.Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper()) || s.FirstMidName.ToUpper().Contains(searchString.ToUpper()));
+            if (searchString != null) {
+                page = 1;
             }
-
-            switch (sortOrder)
-            {
-                case "name_desc":
-                    students = students.OrderByDescending(s => s.LastName);
-                    break;
-                case "Date":
-                    students = students.OrderBy(s => s.EnrollmentDate);
-                    break;
-                case "date_desc":
-                    students = students.OrderByDescending(s => s.EnrollmentDate);
-                    break;
-                default:
-                    students = students.OrderBy(s => s.LastName);
-                    break;
-            }
-            return View(students.ToList());
+        else { searchString = currentFilter; }
+        ViewBag.CurrentFilter = searchString;
+        var students = from s in db.Students
+                       select s;
+        if (!String.IsNullOrEmpty(searchString))
+        {
+            students = students.Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())
+            || s.FirstMidName.ToUpper().Contains(searchString.ToUpper()));
         }
+        switch (sortOrder)
+        {
+            case "name_desc":
+                students = students.OrderByDescending(s => s.LastName);
+                break;
+            case "Date":
+                students = students.OrderBy(s => s.EnrollmentDate);
+                break;
+            case "date_desc":
+                students = students.OrderByDescending(s => s.EnrollmentDate);
+                break;
+            default: // Name ascending
+                students = students.OrderBy(s => s.LastName);
+                break;
+        }
+        int pageSize = 3; int pageNumber = (page ?? 1); return View(students.ToPagedList(pageNumber, pageSize));
+}
 
         // GET: Student/Details/5
         public ActionResult Details(int? id)
