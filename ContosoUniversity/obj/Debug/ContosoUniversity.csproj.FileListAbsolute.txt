@@ -56,3 +56,6 @@ C:\Users\Cheryl\documents\visual studio 2013\Projects\ContosoUniversity\ContosoU
 C:\Users\Cheryl\documents\visual studio 2013\Projects\ContosoUniversity\ContosoUniversity\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Cheryl\documents\visual studio 2013\Projects\ContosoUniversity\ContosoUniversity\obj\Debug\ContosoUniversity.dll
 C:\Users\Cheryl\documents\visual studio 2013\Projects\ContosoUniversity\ContosoUniversity\obj\Debug\ContosoUniversity.pdb
+C:\Users\Cheryl\documents\visual studio 2013\Projects\ContosoUniversity\ContosoUniversity\obj\Debug\ContosoUniversity.csprojResolveAssemblyReference.cache
+C:\Users\Cheryl\documents\visual studio 2013\Projects\ContosoUniversity\ContosoUniversity\obj\Debug\ContosoUniversity.Migrations.InitialCreate.resources
+C:\Users\Cheryl\documents\visual studio 2013\Projects\ContosoUniversity\ContosoUniversity\obj\Debug\ContosoUniversity.csproj.GenerateResource.Cache
