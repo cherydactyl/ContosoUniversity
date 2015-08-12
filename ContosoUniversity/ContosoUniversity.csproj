@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -182,6 +183,14 @@
     <Compile Include="Migrations\201508111339143_InitialCreate.Designer.cs">
       <DependentUpon>201508111339143_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508121425396_MaxLengthOnNames.cs" />
+    <Compile Include="Migrations\201508121425396_MaxLengthOnNames.Designer.cs">
+      <DependentUpon>201508121425396_MaxLengthOnNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508121427398_ColumnFirstName.cs" />
+    <Compile Include="Migrations\201508121427398_ColumnFirstName.Designer.cs">
+      <DependentUpon>201508121427398_ColumnFirstName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Course.cs" />
@@ -216,7 +225,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -270,6 +281,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201508111339143_InitialCreate.resx">
       <DependentUpon>201508111339143_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508121425396_MaxLengthOnNames.resx">
+      <DependentUpon>201508121425396_MaxLengthOnNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508121427398_ColumnFirstName.resx">
+      <DependentUpon>201508121427398_ColumnFirstName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
