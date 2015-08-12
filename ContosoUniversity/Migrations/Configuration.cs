@@ -39,7 +39,12 @@ namespace ContosoUniversity.Migrations
                 new Course {CourseID = 2042, Title = "Literature", Credits = 4, }
             };
             courses.ForEach(s => context.Courses.AddOrUpdate(p => p.Title, s));
-            context.SaveChanges();
+
+            //commented this out to try to address to a error on database-update:
+            //"There is already an object named 'Course' in the database."
+            //and it worked!
+            //context.SaveChanges();   
+                 
             var enrollments = new List<Enrollment>
             {
                 new Enrollment {

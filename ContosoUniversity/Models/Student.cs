@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ContosoUniversity.Models
 {
@@ -12,6 +13,7 @@ namespace ContosoUniversity.Models
         public string LastName { get; set; }
         [StringLength(50, ErrorMessage = "First name cannot be longer than 50 characters.")]
         [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$", ErrorMessage = "First must contain only letters and start with a capital letter.")]
+        //[Column("FirstName")]
         public string FirstMidName { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
