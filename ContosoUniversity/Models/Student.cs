@@ -33,6 +33,8 @@ namespace ContosoUniversity.Models
             get
             {
                 return LastName + ", " + FirstMidName;
+            }
+        }
 
         public virtual ICollection<Enrollment> Enrollments { get; set; }
     }
